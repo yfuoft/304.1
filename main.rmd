@@ -50,8 +50,7 @@ While there has been great debate on the effectiveness of various specific lockd
 
 ```{r}
 data_dates <- data %>%
-  mutate(date = as.Date("Reported Date", "%d-%m-%Y")) %>%
-  arrange(date)
+  arrange(`Reported Date`)
 
 
 ```
