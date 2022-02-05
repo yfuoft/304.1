@@ -1,4 +1,0 @@
-"0","#datafile1 <- resources %>%"
-"0","#  get_resource()"
-"0",""
-"0","write_csv(data, ""datafiles/datafile1.csv"")"

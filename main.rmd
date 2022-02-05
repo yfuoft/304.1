@@ -14,6 +14,8 @@ library(opendatatoronto)
 library(dplyr)
 library(ggplot2)
 library(readr)
+library(ckanr)
+library(DBI)
 # get package
 
 
@@ -31,13 +33,25 @@ datastore_resources <- filter(resources, tolower(format) %in% c('csv', 'geojson'
  
 # load the first datastore resource as a sample
 data <- filter(datastore_resources, row_number()==1) %>% get_resource()
-data
 #datafile1 <- resources %>%
 #  get_resource()
 
 write_csv(data, "datafiles/datafile1.csv")
 ```
-### Statistical Insights regarding the spread of COVID-19 in Toronto by Sex.
-
+# Statistical Insights regarding the spread of COVID-19 in Toronto by Sex.
+## Abstract
+## Introduction
 During the first quarter of 2020, Canada began to grasp the seriousness of the viral COVID-19 epidemic with various jurisdictions enforcing a combination of restrictions, ranging from mandating face masks in public to fully-blown lockdowns. 
-While there has been great debate on the effectiveness of various specific lockdown restrictions and their effectiveness, and whether such restrictions on civilian freedom are justified, this paper will examine the cumulative impact on the Toronto population. The relative uniqueness of this paper can be attributed to comparing the changes in the spread of COVID-19 and the survival rates of those impacted over multiple time periods, and breaking these numbers down by sex to see if certain groups are more at risk.
+While there has been great debate on the effectiveness of various specific lockdown restrictions and their effectiveness, and whether such restrictions on civilian freedom are justified, this paper will examine the cumulative impact on the Toronto population. The relative uniqueness of this paper can be attributed to comparing the changes in the spread of COVID-19 and the survival rates of those impacted over multiple time periods, and breaking these numbers down by sex to see if certain groups are more at risk. Furthermore, a statistical analysis between how contracting the virus via different media impacts neighborhood-specific spread and COVID-19 mortality rates.
+
+## Data
+
+### Variations between the frequency of COVID-19 contracted via different media in different time periods:
+
+```{r}
+data_dates <- data %>%
+  mutate(date = as.Date("Reported Date", "%d-%m-%Y")) %>%
+  arrange(date)
+
+
+```
