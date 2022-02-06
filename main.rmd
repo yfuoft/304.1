@@ -10,7 +10,6 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(knitr)
 library(opendatatoronto)
-library(opendatatoronto)
 library(dplyr)
 library(ggplot2)
 library(readr)
@@ -40,18 +39,20 @@ data <- filter(datastore_resources, row_number()==1) %>%
 
 data_file <- write_csv(data, "datafiles/datafile1.csv")
 ```
+
 # Statistical Insights regarding the spread of COVID-19 in Toronto by Sex.
+
 ## Abstract
+
 ## Introduction
-During the first quarter of 2020, Canada began to grasp the seriousness of the viral COVID-19 epidemic. Various jurisdictions started enforcing a combination of restrictions, ranging from mandating face masks in public to fully-blown lockdowns. 
-While there has been great debate on the effectiveness of various specific lockdown restrictions and their effectiveness, and whether such restrictions on civilian freedom are justified, this paper will examine the impact on the Toronto population. It will compare the frequencies of contracted COVID-19 by demographic factors such as age and sex against multiple time frames. The latter will help us deduce whether the weather has any statistically significant impact on both the spread of the virus and the recovery rates.It will also further test whether weather has an impact on the recovery rates of COVID-19 victims that are deemed vulnerable due to age, if it is determined to be the case.
+
+During the first quarter of 2020, Canada began to grasp the seriousness of the viral COVID-19 epidemic. Various jurisdictions started enforcing a combination of restrictions, ranging from mandating face masks in public to fully-blown lockdowns. While there has been great debate on the effectiveness of various specific lockdown restrictions and their effectiveness, and whether such restrictions on civilian freedom are justified, this paper will examine the impact on the Toronto population. It will compare the frequencies of contracted COVID-19 by demographic factors such as age and sex against multiple time frames. The latter will help us deduce whether the weather has any statistically significant impact on both the spread of the virus and the recovery rates.It will also further test whether weather has an impact on the recovery rates of COVID-19 victims that are deemed vulnerable due to age, if it is determined to be the case.
 
 ## Data
 
 ### Variations between the frequency of COVID-19 contracted in different age groups by date
 
 ```{r}
-library(ggplot2)
 data_dates <- data %>%
   arrange(`Reported Date`)
 
@@ -74,15 +75,11 @@ ggplot2(data, aes(data$`Reported Date`, data$`Age Group`))
 
 ### Variation in the frequency of contracting COVID-19 by sex over time
 
-
-
 ```{r}
 
 
 
 ```
-
-
 
 ### Variations in the frequency of contracting COVID-19 by sex and age over time
 
@@ -91,4 +88,4 @@ ggplot2(data, aes(data$`Reported Date`, data$`Age Group`))
 
 ```
 
-### Recovery rates from COVID-19 
+### Recovery rates from COVID-19
