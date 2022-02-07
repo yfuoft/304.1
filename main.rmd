@@ -1,5 +1,5 @@
 ---
-title: "Paper 1"
+title: "COVID-19: The Vulnerable Population Groups of Toronto"
 author: "Yousuf Farhan"
 date: "04/02/2022"
 output: pdf_document
@@ -52,16 +52,40 @@ During the first quarter of 2020, Canada began to grasp the seriousness of the v
 
 ### Variations between the frequency of COVID-19 contracted in different age groups by date
 
-```{r}
-data_dates <- data %>%
-  arrange(`Reported Date`)
-library(ggplot2)
-ggplot(data, aes(data$`Age Group`,data$`Client Gender`))
-+ geom_histogram(
-  
-)
-              
-      
+```{r, include=FALSE}
+data_dates <- data %>% arrange(`Reported Date`)
+
+data_gender <- data %>%
+  group_by(data$`Age Group`) 
+data_gender_count <- data %>%
+  count(data$`Client Gender`)
+rename(data_gender_count, Gender = `data$\`Client Gender\``)
+rename(data_gender_count, Cases = n)
+
+
+#list_ages <- unique(data$`Age Group`)
+#data_dates
+#ggplot(data, aes(data, aes()) + geom_histogram()
+# data_mutage <- mutate(data$`Age Group` = case_when(
+#   "40 to 49 Years" ~ 40,
+#   "20 to 29 Years" ~ 20,
+#   "30 to 39 Years" ~ 30,
+#   "50 to 59 Years" ~ 50,
+#   "60 to 69 Years" ~ 60,
+#   "70 to 79 Years"~ 70,
+#   "80 to 89 Years" ~ 80,
+#   "90 and older" ~ 90,
+#   "19 and younger" ~ 0
+#   ""
+# ))
+# data_age <- cut(data$`Age Group`,
+#                 right=False,
+#                 breaks = c("40 to 49 Years","20 to 29 Years","19 and younger","30 to 39 Years","50 to 59 Years","60 to 69 Years","80 to 89 Years","70 to 79 Years", "90 and older"),
+#                 labels = list_ages
+#                   )
+# data_age
+# 
+#       
 ```
 
 ### Variation in the frequency of contracting COVID-19 by sex over time
