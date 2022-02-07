@@ -6,7 +6,7 @@ output: pdf_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+#knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(knitr)
 library(opendatatoronto)
@@ -32,12 +32,14 @@ resources <- list_package_resources("64b54586-6180-4485-83eb-81e8fae3b8fe")
 datastore_resources <- filter(resources, tolower(format) %in% c('csv', 'geojson'))
  
 # load the first datastore resource as a sample
-data <- filter(datastore_resources, row_number()==1) %>% 
-  get_resource()
-#datafile1 <- resources %>%
-#  get_resource()
 
-data_file <- write_csv(data, "datafiles/datafile1.csv")
+# datafile1 <- resources %>%
+#  get_resource()
+data <- filter(data_file, row_number()==1) %>% 
+        get_resource()
+data_file <- write_csv(datastore_resources, "datafiles/datafile1.csv")
+
+
 ```
 
 # Statistical Insights regarding the spread of COVID-19 in Toronto by Sex.
@@ -50,7 +52,7 @@ During the first quarter of 2020, Canada began to grasp the seriousness of the v
 
 ## Data
 
-### Variations between the frequency of COVID-19 contracted in different age groups by date
+### Variations between the frequency of COVID-19 contracted by gender
 
 ```{r, include=FALSE}
 data_dates <- data %>% arrange(`Reported Date`)
@@ -88,7 +90,7 @@ rename(data_gender_count, Cases = n)
 #       
 ```
 
-### Variation in the frequency of contracting COVID-19 by sex over time
+### Variation in the frequency of contracting COVID-19 by age over time
 
 ```{r}
 
@@ -96,11 +98,6 @@ rename(data_gender_count, Cases = n)
 
 ```
 
-### Variations in the frequency of contracting COVID-19 by sex and age over time
-
-```{r}
 
 
-```
-
-### Recovery rates from COVID-19
+### Recovery rates from COVID-19 by sex and gender
