@@ -55,19 +55,10 @@ During the first quarter of 2020, Canada began to grasp the seriousness of the v
 ```{r}
 data_dates <- data %>%
   arrange(`Reported Date`)
-
-ggplot2(data, aes(data$`Reported Date`, data$`Age Group`))
-+ geom_bar(
-    mapping = NULL,
-  data = NULL,
-  stat = "count",
-  position = "stack",
-  ...,
-  width = NULL,
-  na.rm = FALSE,
-  orientation = NA,
-  show.legend = NA,
-  inherit.aes = TRUE
+library(ggplot2)
+ggplot(data, aes(data$`Age Group`,data$`Client Gender`))
++ geom_histogram(
+  
 )
               
       
